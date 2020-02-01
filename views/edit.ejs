@@ -1,0 +1,50 @@
+<% include partials/header %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Form</title>
+</head>
+<body>
+    <div class="ui main text container segment">
+        <div class="ui huge header"> Edit <%= blog.First_name%></div>
+        <div class="ui huge header"> Edit <%= blog.Last_name%></div>
+
+          <form action="/blogs/<%=blog._id%>?_method=PUT" method="POST" class="ui form">
+            <div class="field">
+                <label> First Name: </label>
+                <input type="text" name="blog[title]" placeholder="title" value='<%=blog.title%>'
+            </div>
+            <div class="field">
+                <label> Last Name: </label>
+                <input type="text" name="blog[First_name]" placeholder="title" value='<%=blog.First_name%>'
+            </div>
+
+            <div class="field">
+                    <label> Image: </label>
+                    <input type="text" name="blog[image]" placeholder="image" value='<%=blog.image%>'>
+             </div>
+
+             <div class="field">
+                    <label> email: </label>
+                    <input type="text" name="blog[email]">value='<%=blog.email%>'</input>
+             </div>
+
+             <div class="field">
+                    <label> Location: </label>
+                    <input type="text" name="blog[Location]">value='<%=blog.Location%>'</input>
+             </div>
+
+             <div class="field">
+                    <label> Job description: </label>
+                    <textarea name="blog[j_des]">value='<%=blog.j_des%>'</textarea>
+             </div>
+             <input type="submit" class="ui violet basic button">
+          </form>
+    </div>
+</body>
+</html>
+
+<% include partials/footer %>

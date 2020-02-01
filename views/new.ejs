@@ -1,0 +1,120 @@
+<% include partials/header %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Form</title>
+</head>
+<script type="text/javascript">
+$(document).ready(function(){
+    var maxField = 10; //Input fields increment limitation
+    var addButton = $('.add_button'); //Add button selector
+    var wrapper = $('.field_wrapper'); //Input field wrapper
+    var fieldHTML = '<div><input type="text" name="field_name[]" value=""/><a href="javascript:void(0);" class="remove_button"><img src="remove-icon.png"/></a></div>'; //New input field html 
+    var x = 1; //Initial field counter is 1
+    
+    //Once add button is clicked
+    $(addButton).click(function(){
+        //Check maximum number of input fields
+        if(x < maxField){ 
+            x++; //Increment field counter
+            $(wrapper).append(fieldHTML); //Add field html
+        }
+    });
+    
+    //Once remove button is clicked
+    $(wrapper).on('click', '.remove_button', function(e){
+        e.preventDefault();
+        $(this).parent('div').remove(); //Remove field html
+        x--; //Decrement field counter
+    });
+});
+</script>
+<body>
+    <div class="ui main text container segment">
+        <div class="ui huge header"> Create your resume</div>
+          <form action="/blogs" method="POST" class="ui form">
+            <div class="field">
+                <label> First Name: </label>
+                <input type="text" name="blog[First_name]" placeholder="first name">
+            </div>
+            <div class="field">
+                <label> Last Name: </label>
+                <input type="text" name="blog[Last_name]" placeholder="last name">
+            </div>
+            <div class="field"> 
+                <label>Gender:</label>
+            <input type="radio" name="gender" value="male" checked> Male<br>
+            <input type="radio" name="gender" value="female"> Female<br>
+            <input type="radio" name="gender" value="other"> Other  
+            </div>
+
+            <div class="field">
+                    <label> Image: </label>
+                    <input type="text" name="blog[image]" placeholder="image">
+             </div>
+
+             <div class="field">
+                    <label> DOB: </label>
+                    <input type="date" name="blog[DoB]" placeholder="DOB">
+             </div>
+
+             <div class="field">
+                    <label> Education: </label>
+                    <select name="blog[education]">
+                        <option value="Secondary education">Secondary education</option>
+                        <option value="Higher Secondary">Higher Secondary</option>
+                        <option value="Graduation">Graduation</option>
+                        <option value="Post Graduation">Post Graduation</option>
+                        <option value="PhD">PhD</option>
+                    </select>
+             </div>
+
+             <div class="field">
+                    <label> School's Name: </label>
+                    <input type="text" name="blog[Institution_name]" placeholder="Institution Name">
+             </div>
+
+             <div class="field">
+                    <label> Final Score/GPA: </label>
+                    <input type="text" name="blog[Score]" placeholder="percentage or CGPA out of 10">
+             </div>
+             <div class="field">
+                    <label> Are you currently employed?: </label>
+                    <input type="radio" name="blog[employed]" value="Yes" checked> Yes<br>
+                    <input type="radio" name="blog[employed]" value="No"> No<br>
+             </div>
+              <span>Job</span>
+             <div class="field">
+                    <label> Organization Name: </label>
+                    <input type="date" name="blog[DoB]" placeholder="DOB">
+             </div>
+             <div class="field">
+                    <label> Organization Size: </label>
+                    <input type="text" name="blog[j_size]" placeholder="No. of employees">
+             </div>
+              <div class="field">
+                    <label> Job Profile: </label>
+                    <input type="text" name="blog[j_profile]" placeholder="Position/ Profile">
+             </div>
+             <div class="field">
+                    <label> Description: </label>
+                    <textarea name="blog[j_des]"></textarea>
+             </div>
+
+             <div class="field_wrapper">
+                <div>
+                    <label>Skill Set</label>
+                    <input type="text" name="blog[skills]" placeholder="Skills"/>
+                    <a href="javascript:void(0);" class="add_button" title="Add field"><img src="add-icon.png"/></a>
+                </div>
+            </div>
+             <input type="submit" class="ui violet basic button">
+          </form>
+    </div>
+</body>
+</html>
+
+<% include partials/footer %>
